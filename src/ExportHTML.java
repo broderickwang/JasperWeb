@@ -4,6 +4,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,11 +20,12 @@ public class ExportHTML extends javax.servlet.http.HttpServlet {
         response.setCharacterEncoding("UTF-8");
         try {
             File reportFile = new File(this.getServletContext()
-                    .getRealPath("jasper/landscape.jasper"));
+                    .getRealPath("jasper/custom.jasper"));
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(reportFile);
             Map parameters = new HashMap();
+            File image = new File(this.getServletContext().getRealPath("/jasper/cherry.jpg"));
+            parameters.put("image", new FileInputStream(image));
             parameters.put("year", "2013");
-            parameters.put("imageURL","/Users/ttb/JaspersoftWorkspace/MyReports/cherry.jpg");
             Class.forName("oracle.jdbc.driver.OracleDriver");
             String url = "jdbc:oracle:" + "thin:@192.168.9.202:1521:orcl";
             String user = "sde";
