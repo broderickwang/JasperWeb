@@ -20,12 +20,13 @@ public class ExportHTML extends javax.servlet.http.HttpServlet {
         response.setCharacterEncoding("UTF-8");
         try {
             File reportFile = new File(this.getServletContext()
-                    .getRealPath("jasper/custom.jasper"));
+                    .getRealPath("jasper/mainjiaofei.jasper"));
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(reportFile);
             Map parameters = new HashMap();
             File image = new File(this.getServletContext().getRealPath("/jasper/cherry.jpg"));
             parameters.put("image", new FileInputStream(image));
             parameters.put("year", "2013");
+            parameters.put("clientid","1");
             Class.forName("oracle.jdbc.driver.OracleDriver");
             String url = "jdbc:oracle:" + "thin:@192.168.9.202:1521:orcl";
             String user = "sde";
