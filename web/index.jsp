@@ -13,6 +13,9 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <a href="JRHTMLServlet">Servlet中生成HTML(过时方法)</a><br>
+  <a href="ExportHTML">Servlet中生成HTML</a><br>
+  <a href="ExportPDF">Servlet中生成PDF</a><br>
+  <a href="viewer.jsp">JSP中生成报表显示</a>
   </body>
 </html>

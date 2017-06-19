@@ -2,6 +2,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.type.OrientationEnum;
 import net.sf.jasperreports.engine.util.JRLoader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,11 +21,12 @@ public class ExportHTML extends javax.servlet.http.HttpServlet {
         response.setCharacterEncoding("UTF-8");
         try {
             File reportFile = new File(this.getServletContext()
-                    .getRealPath("jasper/mainjiaofei.jasper"));
+                    .getRealPath("jasper/jiaofeidan.jasper"));
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(reportFile);
+
             Map parameters = new HashMap();
             File image = new File(this.getServletContext().getRealPath("/jasper/cherry.jpg"));
-            parameters.put("image", new FileInputStream(image));
+            parameters.put("imgs", new FileInputStream(image));
             parameters.put("year", "2013");
             parameters.put("clientid","1");
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -34,6 +36,7 @@ public class ExportHTML extends javax.servlet.http.HttpServlet {
             Connection conn = DriverManager.getConnection(url, user, password);
             JasperPrint jasperPrint = JasperFillManager.fillReport(
                     jasperReport, parameters, conn);
+
             /*5.0之后已过时
              * JRHtmlExporter exporter = new JRHtmlExporter();
             exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
@@ -41,6 +44,7 @@ public class ExportHTML extends javax.servlet.http.HttpServlet {
 
             exporter.setParameter(JRHtmlExporterParameter.IS_USING_IMAGES_TO_ALIGN, Boolean.FALSE);
             exporter.exportReport();*/
+            jasperPrint.setOrientation(OrientationEnum.LANDSCAPE);
             JasperExportManager.exportReportToHtmlFile(jasperPrint, this.getServletContext().getRealPath("/")+"test.html");
             conn.close();
 

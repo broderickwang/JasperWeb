@@ -19,9 +19,28 @@
         <servlet-name>ExportPDF</servlet-name>
         <servlet-class>ExportPDF</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ExportPDF</servlet-name>
         <url-pattern>/ExportPDF</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>JRHTMLServlet</servlet-name>
+        <servlet-class>JRHTMLServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JRHTMLServlet</servlet-name>
+        <url-pattern>/JRHTMLServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JasperReportImageServlet</servlet-name>
+        <servlet-class>
+            net.sf.jasperreports.j2ee.servlets.ImageServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JasperReportImageServlet</servlet-name>
+        <url-pattern>/image</url-pattern>
     </servlet-mapping>
 </web-app>

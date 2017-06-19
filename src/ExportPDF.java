@@ -24,20 +24,25 @@ public class ExportPDF extends HttpServlet {
             throws ServletException, IOException {
 
         File jasperFile = new File(this.getServletContext()
-                .getRealPath("/jasper/landscape.jasper"));
+                .getRealPath("/jasper/jiaofeidan.jasper"));
         File image = new File(this.getServletContext().getRealPath("/jasper/cherry.jpg"));
         Map<String, Object> parameters = new HashMap<String, Object>();
 //		parameters.put("year", "2013");
-        parameters.put("image", new FileInputStream(image));
+        parameters.put("imgs", new FileInputStream(image));
         parameters.put("imageURL","/Users/ttb/JaspersoftWorkspace/MyReports/cherry.jpg");
 //		parameters.put("unit_mc", "ceshi");
         JasperPrint jasperPrint = null;
         try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String url = "jdbc:oracle:" + "thin:@192.168.9.202:1521:orcl";
+            String user = "sde";
+            String password = "sde";
+            Connection conn = DriverManager.getConnection(url, user, password);
             JasperReport jasperReport = (JasperReport) JRLoader
                     .loadObjectFromFile(jasperFile.getPath());
             jasperPrint = JasperFillManager.fillReport(jasperReport,
-                    parameters, new CustomDataSource());
-        } catch (JRException e) {
+                    parameters,conn /*new JiaofeiDataSource()*/);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         if (null != jasperPrint) {
