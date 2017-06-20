@@ -43,4 +43,20 @@
         <servlet-name>JasperReportImageServlet</servlet-name>
         <url-pattern>/image</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CustomServlet</servlet-name>
+        <servlet-class>CustomServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubServlet</servlet-name>
+        <servlet-class>SubServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomServlet</servlet-name>
+        <url-pattern>/CustomServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubServlet</servlet-name>
+        <url-pattern>/SubServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

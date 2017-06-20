@@ -1,9 +1,9 @@
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.type.OrientationEnum;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.export.HtmlExporterConfiguration;
+import net.sf.jasperreports.export.SimpleHtmlExporterConfiguration;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -44,8 +44,16 @@ public class ExportHTML extends javax.servlet.http.HttpServlet {
 
             exporter.setParameter(JRHtmlExporterParameter.IS_USING_IMAGES_TO_ALIGN, Boolean.FALSE);
             exporter.exportReport();*/
+
+            //强制设置分页，不再使用过时的方法
+            DefaultJasperReportsContext context = DefaultJasperReportsContext.getInstance();
+            context.setProperty(HtmlExporterConfiguration.PROPERTY_BETWEEN_PAGES_HTML,"<DIV STYLE='page-break-before:always;'></DIV>");
+
             jasperPrint.setOrientation(OrientationEnum.LANDSCAPE);
-            JasperExportManager.exportReportToHtmlFile(jasperPrint, this.getServletContext().getRealPath("/")+"test.html");
+            /*SimpleHtmlExporterConfiguration simpleHtmlExporterConfiguration = new SimpleHtmlExporterConfiguration();
+            simpleHtmlExporterConfiguration.setBetweenPagesHtml("<DIV STYLE='page-break-before:always;'></DIV>");*/
+
+            JasperExportManager.getInstance(context).exportReportToHtmlFile(jasperPrint, this.getServletContext().getRealPath("/")+"test.html");
             conn.close();
 
             response.sendRedirect("test.html");
