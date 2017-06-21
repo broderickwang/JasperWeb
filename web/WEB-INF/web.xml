@@ -51,6 +51,14 @@
         <servlet-name>SubServlet</servlet-name>
         <servlet-class>SubServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MainSubServlet</servlet-name>
+        <servlet-class>MainSubServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TemplateServlet</servlet-name>
+        <servlet-class>TemplateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomServlet</servlet-name>
         <url-pattern>/CustomServlet</url-pattern>
@@ -58,5 +66,13 @@
     <servlet-mapping>
         <servlet-name>SubServlet</servlet-name>
         <url-pattern>/SubServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MainSubServlet</servlet-name>
+        <url-pattern>/MainSubServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TemplateServlet</servlet-name>
+        <url-pattern>/TemplateServlet</url-pattern>
     </servlet-mapping>
 </web-app>

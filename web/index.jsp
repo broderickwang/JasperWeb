@@ -18,6 +18,8 @@
   <a href="ExportPDF">Servlet中生成PDF</a><br>
   <a href="viewer.jsp">JSP中生成报表显示</a><br>
   <a href="/CustomServlet">Customer表单</a><br>
-  <a href="/SubServlet">SubServlet</a>
+  <a href="/SubServlet">SubServlet</a><br>
+  <a href="/MainSubServlet">主从表表单</a><br>
+  <a href="/TemplateServlet">JavaBean填充表单</a>
   </body>
 </html>
