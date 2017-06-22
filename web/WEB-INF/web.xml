@@ -59,6 +59,14 @@
         <servlet-name>TemplateServlet</servlet-name>
         <servlet-class>TemplateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrossTableServlet</servlet-name>
+        <servlet-class>CrossTableServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrossTable2Servlet</servlet-name>
+        <servlet-class>CrossTable2Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomServlet</servlet-name>
         <url-pattern>/CustomServlet</url-pattern>
@@ -74,5 +82,13 @@
     <servlet-mapping>
         <servlet-name>TemplateServlet</servlet-name>
         <url-pattern>/TemplateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrossTableServlet</servlet-name>
+        <url-pattern>/CrossTableServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrossTable2Servlet</servlet-name>
+        <url-pattern>/CrossTable2Servlet</url-pattern>
     </servlet-mapping>
 </web-app>
