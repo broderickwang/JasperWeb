@@ -22,6 +22,7 @@
   <a href="/MainSubServlet">主从表表单</a><br>
   <a href="/TemplateServlet">JavaBean填充表单</a><br>
   <a href="/CrossTableServlet">CrossTable</a><br>
-  <a href="/CrossTable2Servlet">多表头报表</a>
+  <a href="/CrossTable2Servlet">多表头报表HTML</a><br>
+  <a href="/CrossTablePDFServlet">多表头报表PDF</a>
   </body>
 </html>

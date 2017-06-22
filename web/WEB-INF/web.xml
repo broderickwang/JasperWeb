@@ -67,6 +67,10 @@
         <servlet-name>CrossTable2Servlet</servlet-name>
         <servlet-class>CrossTable2Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrossTablePDFServlet</servlet-name>
+        <servlet-class>CrossTablePDFServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomServlet</servlet-name>
         <url-pattern>/CustomServlet</url-pattern>
@@ -90,5 +94,9 @@
     <servlet-mapping>
         <servlet-name>CrossTable2Servlet</servlet-name>
         <url-pattern>/CrossTable2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrossTablePDFServlet</servlet-name>
+        <url-pattern>/CrossTablePDFServlet</url-pattern>
     </servlet-mapping>
 </web-app>
