@@ -67,7 +67,7 @@ public class JasperHelper {
           /*
               * 设置头信息
               */
-        response.setContentType("application/vnd.ms-excel");
+        /*response.setContentType("application/vnd.ms-excel");
         String defaultname=null;
         if(defaultFilename.trim()!=null&&defaultFilename!=null){
             defaultname=defaultFilename+".xls";
@@ -86,7 +86,33 @@ public class JasperHelper {
         exporter.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND,Boolean.FALSE);
         exporter.exportReport();
         ouputStream.flush();
-        ouputStream.close();
+        ouputStream.close();*/
+        String defaultname=null;
+        if(defaultFilename.trim()!=null&&defaultFilename!=null){
+            defaultname=defaultFilename+".xls";
+        }else{
+            defaultname="export.xls";
+        }
+        String fileName = new String(defaultname.getBytes("gbk"), "utf-8");
+        System.out.println("1"); // only this line is printed in console not others
+        JRXlsExporter exporter1=null;
+        try{
+            exporter1 = new  JRXlsExporter();
+            System.out.println("2");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("3");
+        response.setContentType("application/xls");
+        System.out.println("4");
+        response.setHeader("Content-Disposition", "inline; filename=\""+fileName+"\"");
+        System.out.println("5");
+        exporter1.setParameter(JRExporterParameter.JASPER_PRINT,  jasperPrint);
+        System.out.println("6");
+        exporter1.setParameter(JRExporterParameter.OUTPUT_STREAM,  response.getOutputStream());
+        System.out.println("7");
+        exporter1.exportReport();
     }
 
     /**

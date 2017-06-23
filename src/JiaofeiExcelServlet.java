@@ -30,29 +30,6 @@ public class JiaofeiExcelServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       /* try {
-            response.setCharacterEncoding("UTF-8");
-            ServletContext servletContext=this.getServletConfig().getServletContext();
-            //得到jasper文件
-            File jasperFile=new File(servletContext.getRealPath("/jasper/jiaofeidan.jasper"));
-            JasperReport jasperReport= (JasperReport)JRLoader.loadObject(jasperFile);
-            JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,null, Utils.getConnection());
-            JRXlsExporter exporter=new JRXlsExporter();
-            exporter.setParameter(JRXlsExporterParameter.JASPER_PRINT, jasperPrint);
-            exporter.setParameter(JRXlsExporterParameter.OUTPUT_STREAM, response.getOutputStream());
-            exporter.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
-            exporter.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
-
-            response.setHeader("Content-Disposition", "attachment;filename=first.xls");
-            response.setContentType("application/vnd_ms-excel");
-            exporter.exportReport();
-        } catch (JRException e) {
-            e.printStackTrace();
-        } catch (IOException e){
-            e.printStackTrace();
-        } catch (Exception e){
-
-        }*/
         ServletContext servletContext=this.getServletConfig().getServletContext();
         File jasperFile=new File(servletContext.getRealPath("/jasper/jiaofeidan.jasper"));
         JasperReport jasperReport= null;
@@ -60,8 +37,9 @@ public class JiaofeiExcelServlet extends HttpServlet {
             jasperReport = (JasperReport) JRLoader.loadObject(jasperFile);
             JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,null, Utils.getConnection());
 
+            JasperHelper.exportExcel(jasperPrint,"jiaofeidan",request,response);
 
-            System.out.println("1"); // only this line is printed in console not others
+            /*System.out.println("1"); // only this line is printed in console not others
             JRXlsExporter exporter1=null;
             try{
                 exporter1 = new  JRXlsExporter();
@@ -79,7 +57,7 @@ public class JiaofeiExcelServlet extends HttpServlet {
             System.out.println("6");
             exporter1.setParameter(JRExporterParameter.OUTPUT_STREAM,  response.getOutputStream());
             System.out.println("7");
-            exporter1.exportReport();
+            exporter1.exportReport();*/
 
         } catch (Exception e) {
             e.printStackTrace();
