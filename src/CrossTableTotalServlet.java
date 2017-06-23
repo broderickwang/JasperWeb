@@ -2,6 +2,7 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.type.OrientationEnum;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.export.HtmlExporterConfiguration;
+import util.JHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CrossTable2Servlet extends HttpServlet {
+public class CrossTableTotalServlet extends HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         doGet(request, response);
     }
@@ -40,6 +41,8 @@ public class CrossTable2Servlet extends HttpServlet {
             JasperPrint jasperPrint = JasperFillManager.fillReport(
                     jasperReport, parameters, conn);
 
+
+//            JHelper.JPrint(JHelper.EnumPrint.PDF);
             /*5.0之后已过时
              * JRHtmlExporter exporter = new JRHtmlExporter();
             exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);

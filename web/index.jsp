@@ -18,11 +18,12 @@
   <a href="ExportPDF">Servlet中生成PDF</a><br>
   <a href="viewer.jsp">JSP中生成报表显示</a><br>
   <a href="/CustomServlet">Customer表单</a><br>
-  <a href="/SubServlet">SubServlet</a><br>
+  <%--<a href="/SubServlet">SubServlet</a><br>--%>
   <a href="/MainSubServlet">主从表表单</a><br>
   <a href="/TemplateServlet">JavaBean填充表单</a><br>
   <a href="/CrossTableServlet">CrossTable</a><br>
-  <a href="/CrossTable2Servlet">多表头报表HTML</a><br>
-  <a href="/CrossTablePDFServlet">多表头报表PDF</a>
+  <a href="/CrossTableTotalServlet">多表头报表HTML</a><br>
+  <a href="/CrossTablePDFServlet">多表头报表PDF</a><br>
+  <a href="/JiaofeiExcelServlet">缴费表导出EXCEL</a>
   </body>
 </html>

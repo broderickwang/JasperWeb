@@ -53,6 +53,7 @@ public class SubServlet extends HttpServlet {
                 simpleHtmlExporterConfiguration.setBetweenPagesHtml("<DIV STYLE='page-break-before:always;'></DIV>");
                 JasperExportManager.exportReportToHtmlFile(jasperPrint, this.getServletContext().getRealPath("/")+"subservlet.html");
                 conn.close();
+                
 
                 response.sendRedirect("subservlet.html");
             }
