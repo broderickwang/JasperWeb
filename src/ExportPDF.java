@@ -46,12 +46,7 @@ public class ExportPDF extends HttpServlet {
             e.printStackTrace();
         }
         if (null != jasperPrint) {
-            /*try {
-                exportPdf(response, jasperPrint, "test1");
-            } catch (JRException e) {
-                e.printStackTrace();
-            }*/
-            FileBufferedOutputStream fbos = new FileBufferedOutputStream();
+            /*FileBufferedOutputStream fbos = new FileBufferedOutputStream();
             JRPdfExporter exporter = new JRPdfExporter();
             exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, fbos);
             exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
@@ -80,7 +75,20 @@ public class ExportPDF extends HttpServlet {
                     fbos.close();
                     fbos.dispose();
                 }
+            }*/
+            try{
+                String fileName = new String("export.pdf".getBytes("GBK"), "ISO8859_1");
+                response.setHeader("Content-disposition", "attachment; filename="
+                        + fileName);
+                ServletOutputStream ouputStream = response.getOutputStream();
+                JasperExportManager.exportReportToPdfStream(jasperPrint,
+                        ouputStream);
+                ouputStream.flush();
+                ouputStream.close();
+            }catch (Exception e){
+
             }
+
         }
     }
     /**

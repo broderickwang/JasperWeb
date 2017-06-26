@@ -1,26 +1,16 @@
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.export.JExcelApiExporter;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
-import net.sf.jasperreports.engine.export.JRXlsExporter;
-import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
-import net.sf.jasperreports.engine.util.FileBufferedOutputStream;
 import net.sf.jasperreports.engine.util.JRLoader;
-import util.JasperHelper;
+import JasperUtil.JasperHelper;
+import JasperUtil.PrintType;
 import util.Utils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +27,9 @@ public class JiaofeiExcelServlet extends HttpServlet {
             jasperReport = (JasperReport) JRLoader.loadObject(jasperFile);
             JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,null, Utils.getConnection());
 
-            JasperHelper.exportExcel(jasperPrint,"jiaofeidan",request,response);
+//            JasperHelper.exportExcel(jasperPrint,"jiaofeidan",response);
+            Map parameters = new HashMap();
+            JasperHelper.export(PrintType.EXCEL_TYPE,"jiaofei2",jasperFile,parameters,Utils.getConnection(),response);
 
             /*System.out.println("1"); // only this line is printed in console not others
             JRXlsExporter exporter1=null;
